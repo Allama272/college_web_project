@@ -10,6 +10,7 @@ use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ChirpController extends Controller
 {
@@ -59,7 +60,7 @@ class ChirpController extends Controller
 
         $request->user()->chirps()->create($validated);
 
-        return redirect(route('chirps.index'));
+        return Redirect::back();
     }
 
     /**

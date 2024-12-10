@@ -19,6 +19,7 @@ const user = usePage().props.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
+    photo : user.photo
 });
 </script>
 
@@ -67,6 +68,19 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+            <div>
+                <InputLabel for="photo" value="Photo URL" />
+
+                <TextInput
+                    id="photo"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.photo"
+                    autofocus
+                />
+
+                <InputError class="mt-2" :message="form.errors.photo" />
             </div>
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
