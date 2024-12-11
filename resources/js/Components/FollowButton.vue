@@ -6,8 +6,8 @@
           @click="toggleFollow">
             {{ isFollowing ? 'Unfollow' : 'Follow' }}
         </button>
-        <span class="py-3.5 px-5 rounded-full bg-indigo-50 text-indigo-600 font-semibold text-base leading-7 shadow-sm shadow-transparent transition-all duration-500
-         hover:bg-indigo-100">{{ followersCount }} Followers
+        <span class="py-3.5 px-5 ml-2 rounded-full bg-indigo-100 text-indigo-600 font-semibold text-base leading-7 shadow-sm shadow-transparent transition-all duration-500
+         hover:bg-indigo-200">{{ followersCount }} Followers
         </span>
     </div>
 </template>

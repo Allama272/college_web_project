@@ -32,7 +32,7 @@ const isButtonDisabled = computed(() => form.message.trim().length === 0 || form
         <div class="flex-1">
             <div class="flex justify-between items-center">
                 <div>
-                    <Link :href="route('user_profile', chirp.user.id)" class="text-gray-800">
+                    <Link :href="route('user_profile', chirp.user.id)"  class="text-gray-800">
                     {{ chirp.user.name }}</Link>
                     <small class="ml-2 text-sm text-gray-600">{{ dayjs(chirp.created_at).fromNow()
                         }}</small>

@@ -34,10 +34,9 @@ class ChirpController extends Controller
                     'liked_by_user' => Auth::check()
                         ? $chirp->likes->where('user_id', Auth::id())->isNotEmpty()
                         : false,
-                    'total_likes' => $chirp->likes_count
-                ]);
+                    'total_likes' => $chirp->likes_count]);
             })
-    ]);
+             ,'followingUsers'=> Auth::user()->following()->get()]);
 }
 
     /**

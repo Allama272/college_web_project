@@ -7,7 +7,7 @@ import Chirp from '@/Components/Chirp.vue';
 import { computed } from 'vue';
 import FollowButton from '@/Components/FollowButton.vue';
 
-const props = defineProps(['pub_user', 'user_chirps', 'user_followers', 'isFollowing']);
+const props = defineProps(['pub_user', 'user_chirps', 'user_followers', 'isFollowing', 'user_following']);
 const form = useForm({
     message: '',
 });
@@ -42,8 +42,14 @@ function titleCase(text) {
                     </div>
                     <div class="flex flex-col lg:flex-row max-lg:gap-5 items-center justify-between py-0.5">
                         <div class="flex items-center gap-4">
-                            <follow-button v-if="pub_user.id != $page.props.auth.user.id" :user-id="pub_user.id" :initial-is-following="isFollowing"
-                                :initial-followers-count="user_followers" />
+                            <follow-button v-if="pub_user.id != $page.props.auth.user.id" :user-id="pub_user.id"
+                                :initial-is-following="isFollowing" :initial-followers-count="user_followers" />
+                            <span v-if="pub_user.id === $page.props.auth.user.id" class="py-3.5 px-5 rounded-full bg-indigo-100 text-indigo-600 font-semibold text-base leading-7 shadow-sm shadow-transparent transition-all duration-500
+                         hover:bg-indigo-200">{{ user_followers }} Followers
+                            </span>
+                            <span  class="py-3.5 px-5 rounded-full bg-violet-100 text-indigo-600 font-semibold text-base leading-7 shadow-sm shadow-transparent transition-all duration-500
+                         hover:bg-violet-200">Following {{ user_following }}
+                            </span>
                         </div>
 
                     </div>
