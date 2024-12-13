@@ -13,7 +13,7 @@ const filteredUsers = computed(() => {
 </script>
 
 <template>
-  <div class="bg-white shadow-lg rounded-xl p-4 w-72 max-h-screen flex flex-col">
+  <div class="bg-white shadow-lg rounded-xl p-4 w-2/5 md:w-1/4 max-h-screen flex flex-col ">
     <div class="flex items-center mb-4">
       <h2 class="text-xl font-bold text-gray-800 flex-grow">Following</h2>
       <span class="text-gray-500 text-sm">{{ filteredUsers.length }} users</span>

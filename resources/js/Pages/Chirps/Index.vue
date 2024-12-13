@@ -26,40 +26,29 @@ const isButtonDisabled = computed(() =>
 </script>
 
 <template>
+
     <Head title="Dashboard" />
     <AuthenticatedLayout>
-        <div class="flex overflow-hidden">
+        <div class="flex overflow-hidden pt-10">
             <div class="flex-1 flex justify-center p-4 overflow-y-auto scrollbar-hide">
                 <div class="w-full max-w-xl mx-auto p-4 sm:p-6 lg:p-8">
                     <form @submit.prevent="form.post(route('chirps.store'), { onSuccess: () => form.reset() })">
-                        <textarea
-                            v-model="form.message"
-                            placeholder="What's on your mind?"
+                        <textarea v-model="form.message" placeholder="What's on your mind?"
                             class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-                            rows="4"
-                        ></textarea>
+                            rows="4"></textarea>
                         <InputError :message="form.errors.message" class="mt-2" />
-                        <PrimaryButton
-                            class="mt-4"
-                            :disabled="isButtonDisabled"
-                        >
-                            Chirp
-                        </PrimaryButton>
+                        <PrimaryButton class="mt-4" :is-button-disabled="isButtonDisabled">Post</PrimaryButton>
                     </form>
 
                     <div class="mt-6 space-y-4">
                         <div class="bg-white shadow-sm rounded-lg divide-y">
-                            <Chirp
-                                v-for="chirp in chirps"
-                                :key="chirp.id"
-                                :chirp="chirp"
-                            />
+                            <Chirp v-for="chirp in chirps" :key="chirp.id" :chirp="chirp" />
                         </div>
                     </div>
                 </div>
             </div>
 
-                <following-side-bar :followed_users="followingUsers"></following-side-bar>
+            <following-side-bar class="pt-10" :followed_users="followingUsers"></following-side-bar>
         </div>
     </AuthenticatedLayout>
 </template>
@@ -69,11 +58,15 @@ const isButtonDisabled = computed(() =>
     max-height: 100vh;
     overflow-y: auto;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
+
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 </style>

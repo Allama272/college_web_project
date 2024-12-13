@@ -92,7 +92,7 @@ class ChirpController extends Controller
 
         $chirp->update($validated);
 
-        return redirect(route('chirps.index'));
+        return Redirect::back();
     }
 
     /**
@@ -104,6 +104,6 @@ class ChirpController extends Controller
         Gate::authorize('delete', $chirp);
 
         $chirp->delete();
-        return redirect(route('chirps.index'));
+        return Redirect::back();
     }
 }
