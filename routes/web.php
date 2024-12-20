@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfilePublicController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\AdminController;
 
 
 Route::middleware(['auth'])->group(function () {
@@ -54,6 +55,12 @@ Route::middleware('auth')->group(function () {
     });
 
 });
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    // Other admin routes here
+});
+
 
 
 require __DIR__ . '/auth.php';
