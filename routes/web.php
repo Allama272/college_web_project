@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfilePublicController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\AdminController;
 
 
 Route::middleware(['auth'])->group(function () {
@@ -28,6 +29,13 @@ Route::get('/', function () {
         'canRegister' => Route::has('register')
     ]);
 })->name('Home');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::delete('/admin/{chirp}', [AdminController::class, 'destroy'])->name('admin_delete');
+
+});
 
 Route::get('contact', function () {
     return Inertia::render('Contact'); })->name('contact');
